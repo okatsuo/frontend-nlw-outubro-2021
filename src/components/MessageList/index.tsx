@@ -33,10 +33,10 @@ export function MessageList() {
           prevState[0],
           prevState[1],
         ].filter(Boolean))
-      
+
         messages_queue.shift()
       }
-    }, 3000)
+    }, 500)
   }, [])
 
   useEffect(() => {
