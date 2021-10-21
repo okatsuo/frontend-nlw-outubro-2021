@@ -6,7 +6,6 @@ export const AuthContext = createContext({} as AuthContextData)
 
 export function AuthProvider({ children }: AuthProviderInterface) {
   const [user, setUser] = useState<User | null>(null)
-  const [token, setToken] = useState('')
 
   const signInUrl = `https://github.com/login/oauth/authorize?scope=user&client_id=ea5f579a5fcda4d00bb5`
 
@@ -16,6 +15,9 @@ export function AuthProvider({ children }: AuthProviderInterface) {
     })
     const { user, token } = data
     localStorage.setItem('@dowhile:token', token)
+
+    api.defaults.headers.common.authorization = `Bearer ${token}`
+    
     setUser(user)
   }
 
