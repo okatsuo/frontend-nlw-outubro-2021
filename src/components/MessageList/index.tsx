@@ -36,7 +36,7 @@ export function MessageList() {
 
         messages_queue.shift()
       }
-    }, 500)
+    }, 50)
   }, [])
 
   useEffect(() => {
